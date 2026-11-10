@@ -1,0 +1,1471 @@
+annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SRV1
+    node_definition: server
+    parameters: {}
+    ram: null
+    tags: []
+    x: -640
+    y: -240
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: FIN 1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -280
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+      - id: i1
+        label: eth1
+        slot: 1
+        type: physical
+      - id: i2
+        label: eth2
+        slot: 2
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: ACA 1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: -40
+    y: 240
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: DOC 1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 680
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: EST 1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 920
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: GES 1
+    node_definition: desktop
+    parameters: {}
+    ram: null
+    tags: []
+    x: 1080
+    y: 320
+    interfaces:
+      - id: i0
+        label: eth0
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1461 bytes
+          !
+          ! Last configuration change at 23:50:03 UTC Mon Nov 9 2026
+          !
+          version 17.15
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname SW
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          no ip domain lookup
+          ip domain name donapanch.local
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 79593
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          username admin privilege 15 secret 9 $9$kgcg1N98Mn0CRk$ECVQhQM9UysG.0zzuuG1UXu8GRotsMGjZ.jOrhbkcP2
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           description Trunk a SWM1
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 80,90
+           switchport mode trunk
+          !
+          interface Ethernet0/1
+           description Access SRV1 - VLAN 80
+           switchport access vlan 80
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet0/2
+          !
+          interface Ethernet0/3
+          !
+          interface Vlan80
+           description Management
+           ip address 172.26.10.2 255.255.255.192
+          !
+          ip default-gateway 172.26.10.1
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          no logging btrace
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 3
+           exec-timeout 0 0
+           login
+           transport input ssh
+          line vty 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: SW
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -400
+    y: -240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1947 bytes
+          !
+          ! Last configuration change at 23:50:03 UTC Mon Nov 9 2026
+          !
+          version 17.15
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname SW4
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          no ip domain lookup
+          ip domain name donapanch.local
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 79593
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          username admin privilege 15 secret 9 $9$6nWRhzCxvXkjMU$tg3fl6AdrjVh.fxmT.nfUTiZ1k.NSmU4yZ8pUke67WM
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Port-channel1
+           description EtherChannel a SW5
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+          !
+          interface Ethernet0/0
+           description Trunk a R1 - RoAS
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+          !
+          interface Ethernet0/1
+           description Po1 member a SW5
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+           channel-group 1 mode on
+          !
+          interface Ethernet0/2
+           description Po1 member a SW5
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+           channel-group 1 mode on
+          !
+          interface Ethernet0/3
+          !
+          interface Ethernet1/0
+           description Access DOC1 - VLAN 10
+           switchport access vlan 10
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet1/1
+          !
+          interface Ethernet1/2
+          !
+          interface Ethernet1/3
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          no logging btrace
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 3
+           exec-timeout 0 0
+           login
+           transport input ssh
+          line vty 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: SW4
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 680
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 1772 bytes
+          !
+          ! Last configuration change at 23:50:03 UTC Mon Nov 9 2026
+          !
+          version 17.15
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname SW3
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          no ip domain lookup
+          ip domain name donapanch.local
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 79593
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          username admin privilege 15 secret 9 $9$5X2ZiKk1bAr9a.$U8hrdwC4gpfZi8mbCynJsLe9K/sq1bnqvO24lthS/r2
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Ethernet0/0
+           description Trunk a SWM1
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 60,70,80,90,100
+           switchport mode trunk
+          !
+          interface Ethernet0/1
+           description Access FIN1 - VLAN 60
+           switchport access vlan 60
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet0/2
+          !
+          interface Ethernet0/3
+          !
+          interface Ethernet1/0
+          !
+          interface Ethernet1/1
+          !
+          interface Ethernet1/2
+          !
+          interface Ethernet1/3
+          !
+          interface Ethernet2/0
+           description Access ACA1 - VLAN 70
+           switchport access vlan 70
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet2/1
+          !
+          interface Ethernet2/2
+          !
+          interface Ethernet2/3
+          !
+          interface Vlan60
+           description Management
+           ip address 172.26.9.2 255.255.255.128
+          !
+          ip default-gateway 172.26.9.1
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          no logging btrace
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 3
+           exec-timeout 0 0
+           login
+           transport input ssh
+          line vty 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: SW3
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: 40
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/3
+        slot: 7
+        type: physical
+      - id: i9
+        label: Ethernet2/0
+        slot: 8
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 5083 bytes
+          !
+          ! Last configuration change at 23:46:35 UTC Mon Nov 9 2026
+          !
+          version 15.2
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          service compress-config
+          !
+          hostname SWM1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          !
+          username admin privilege 15 secret 5 $1$afTp$iud/W2hI3nZw9zrAQgL1u/
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain-lookup
+          ip domain-name donapanch.local
+          ip cef
+          ipv6 unicast-routing
+          ipv6 cef
+          !
+          !
+          !
+          spanning-tree mode pvst
+          spanning-tree extend system-id
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           description Management
+           ip address 172.26.255.2 255.255.255.255
+           ipv6 address 2001:25:26:FF::2/128
+          !
+          interface GigabitEthernet0/0
+           description Trunk a SW3
+           switchport trunk allowed vlan 60,70,80,90,100
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           negotiation auto
+          !
+          interface GigabitEthernet0/1
+           description Link a R1 - L3
+           no switchport
+           ip address 172.26.10.166 255.255.255.252
+           negotiation auto
+           ipv6 address 2001:25:26:A::2/64
+          !
+          interface GigabitEthernet0/2
+           description Trunk a SW
+           switchport trunk allowed vlan 80,90
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           negotiation auto
+          !
+          interface GigabitEthernet0/3
+           negotiation auto
+          !
+          interface GigabitEthernet1/0
+           negotiation auto
+          !
+          interface GigabitEthernet1/1
+           negotiation auto
+          !
+          interface GigabitEthernet1/2
+           negotiation auto
+          !
+          interface GigabitEthernet1/3
+           negotiation auto
+          !
+          interface GigabitEthernet2/0
+           negotiation auto
+          !
+          interface GigabitEthernet2/1
+           negotiation auto
+          !
+          interface GigabitEthernet2/2
+           negotiation auto
+          !
+          interface GigabitEthernet2/3
+           negotiation auto
+          !
+          interface GigabitEthernet3/0
+           negotiation auto
+          !
+          interface GigabitEthernet3/1
+           negotiation auto
+          !
+          interface GigabitEthernet3/2
+           negotiation auto
+          !
+          interface GigabitEthernet3/3
+           negotiation auto
+          !
+          interface Vlan60
+           description Gateway Finanzas
+           ip address 172.26.9.1 255.255.255.128
+           ipv6 address 2001:25:26:3::1/64
+          !
+          interface Vlan70
+           description Gateway Academicos
+           ip address 172.26.9.129 255.255.255.128
+           ipv6 address 2001:25:26:2::1/64
+          !
+          interface Vlan80
+           description Gateway Datacenter
+           ip address 172.26.10.1 255.255.255.192
+           ipv6 address 2001:25:26:4::1/64
+          !
+          interface Vlan90
+           description Gateway Blackhull-R2
+           ip address 172.26.10.145 255.255.255.240
+           ipv6 address 2001:25:26:8::1/64
+          !
+          interface Vlan100
+           description Gateway P2P
+           ip address 172.26.10.161 255.255.255.252
+           ipv6 address 2001:25:26:9::1/64
+          !
+          ip forward-protocol nd
+          !
+          ip http server
+          ip http secure-server
+          !
+          ip route 172.26.0.0 255.255.248.0 172.26.10.165
+          ip route 172.26.8.0 255.255.255.0 172.26.10.165
+          ip route 172.26.10.64 255.255.255.224 172.26.10.165
+          ip route 172.26.10.96 255.255.255.224 172.26.10.165
+          ip route 172.26.10.128 255.255.255.240 172.26.10.165
+          ip ssh version 2
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          ipv6 route 2001:25:26::/64 2001:25:26:A::1
+          ipv6 route 2001:25:26:1::/64 2001:25:26:A::1
+          ipv6 route 2001:25:26:5::/64 2001:25:26:A::1
+          ipv6 route 2001:25:26:6::/64 2001:25:26:A::1
+          ipv6 route 2001:25:26:7::/64 2001:25:26:A::1
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          banner incoming ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          banner login ^C
+          IOSv - Cisco Systems Confidential -
+
+          Supplemental End User License Restrictions
+
+          This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+          By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+          ^C
+          !
+          line con 0
+           exec-timeout 0 0
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          line vty 5 15
+           login local
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n9
+    image_definition: null
+    label: SWM1
+    node_definition: iosvl2
+    parameters: {}
+    ram: null
+    tags: []
+    x: -160
+    y: -240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: GigabitEthernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: GigabitEthernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: GigabitEthernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: GigabitEthernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: GigabitEthernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: GigabitEthernet1/3
+        slot: 7
+        type: physical
+      - id: i9
+        label: GigabitEthernet2/0
+        slot: 8
+        type: physical
+      - id: i10
+        label: GigabitEthernet2/1
+        slot: 9
+        type: physical
+      - id: i11
+        label: GigabitEthernet2/2
+        slot: 10
+        type: physical
+      - id: i12
+        label: GigabitEthernet2/3
+        slot: 11
+        type: physical
+      - id: i13
+        label: GigabitEthernet3/0
+        slot: 12
+        type: physical
+      - id: i14
+        label: GigabitEthernet3/1
+        slot: 13
+        type: physical
+      - id: i15
+        label: GigabitEthernet3/2
+        slot: 14
+        type: physical
+      - id: i16
+        label: GigabitEthernet3/3
+        slot: 15
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 2103 bytes
+          !
+          ! Last configuration change at 23:50:03 UTC Mon Nov 9 2026
+          !
+          version 17.15
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname SW5
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip audit notify log
+          ip audit po max-events 100
+          no ip domain lookup
+          ip domain name donapanch.local
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 79593
+          !
+          !
+          spanning-tree mode rapid-pvst
+          spanning-tree extend system-id
+          !
+          username admin privilege 15 secret 9 $9$ku4Ndue0Fnl.hU$PTgCNfjsgWr1v8IbRKe5HtClg3oSg3FQv6DlGX5va6I
+          !
+          vlan internal allocation policy ascending
+          !
+          !
+          !
+          !
+          !
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+          !
+          interface Ethernet0/0
+          !
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+           channel-group 1 mode on
+          !
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport trunk allowed vlan 10,20,30,40,50
+           switchport mode trunk
+           channel-group 1 mode on
+          !
+          interface Ethernet0/3
+          !
+          interface Ethernet1/0
+          !
+          interface Ethernet1/1
+          !
+          interface Ethernet1/2
+          !
+          interface Ethernet1/3
+          !
+          interface Ethernet2/0
+           description Access EST1 - VLAN 20
+           switchport access vlan 20
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet2/1
+          !
+          interface Ethernet2/2
+          !
+          interface Ethernet2/3
+          !
+          interface Ethernet3/0
+           description Access GES1 - VLAN 30
+           switchport access vlan 30
+           switchport mode access
+           spanning-tree portfast
+          !
+          interface Ethernet3/1
+          !
+          interface Ethernet3/2
+          !
+          interface Ethernet3/3
+          !
+          interface Vlan30
+           description Management
+           ip address 172.26.10.67 255.255.255.224
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip ssh bulk-mode 131072
+          !
+          no logging btrace
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 3
+           exec-timeout 0 0
+           login
+           transport input ssh
+          line vty 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n10
+    image_definition: null
+    label: SW5
+    node_definition: ioll2-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 1000
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+      - id: i5
+        label: Ethernet1/0
+        slot: 4
+        type: physical
+      - id: i6
+        label: Ethernet1/1
+        slot: 5
+        type: physical
+      - id: i7
+        label: Ethernet1/2
+        slot: 6
+        type: physical
+      - id: i8
+        label: Ethernet1/3
+        slot: 7
+        type: physical
+      - id: i9
+        label: Ethernet2/0
+        slot: 8
+        type: physical
+      - id: i10
+        label: Ethernet2/1
+        slot: 9
+        type: physical
+      - id: i11
+        label: Ethernet2/2
+        slot: 10
+        type: physical
+      - id: i12
+        label: Ethernet2/3
+        slot: 11
+        type: physical
+      - id: i13
+        label: Ethernet3/0
+        slot: 12
+        type: physical
+      - id: i14
+        label: Ethernet3/1
+        slot: 13
+        type: physical
+      - id: i15
+        label: Ethernet3/2
+        slot: 14
+        type: physical
+      - id: i16
+        label: Ethernet3/3
+        slot: 15
+        type: physical
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          Building configuration...
+
+          Current configuration : 2554 bytes
+          !
+          ! Last configuration change at 23:50:02 UTC Mon Nov 9 2026
+          !
+          version 17.15
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          no logging console
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          no ip domain lookup
+          ip domain name donapanch.local
+          ip cef
+          login on-success log
+          no ipv6 cef
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          memory free low-watermark processor 80093
+          !
+          !
+          spanning-tree mode rapid-pvst
+          !
+          !
+          username admin privilege 15 secret 9 $9$ganXFnlz3R0KFU$MfS/YrfkGDHgcc/LccOKo.EW7Cy3nGGcz8tIOwip/F6
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           description Management
+           ip address 172.26.255.1 255.255.255.255
+           ipv6 address 2001:25:26:FF::1/128
+          !
+          interface Ethernet0/0
+           description Link a SWM1 - L3
+           ip address 172.26.10.165 255.255.255.252
+           ipv6 address 2001:25:26:A::1/64
+          !
+          interface Ethernet0/1
+           description Trunk hacia SW4 - RoAS
+           no ip address
+          !
+          interface Ethernet0/1.10
+           description VLAN 10 Docentes
+           encapsulation dot1Q 10
+           ip address 172.26.8.1 255.255.255.0
+           ipv6 address 2001:25:26:1::1/64
+          !
+          interface Ethernet0/1.20
+           description VLAN 20 Estudiantes
+           encapsulation dot1Q 20
+           ip address 172.26.0.1 255.255.248.0
+           ipv6 address 2001:25:26::1/64
+          !
+          interface Ethernet0/1.30
+           description VLAN 30 Gestion
+           encapsulation dot1Q 30
+           ip address 172.26.10.65 255.255.255.224
+           ipv6 address 2001:25:26:5::1/64
+          !
+          interface Ethernet0/1.40
+           description VLAN 40 Voz
+           encapsulation dot1Q 40
+           ip address 172.26.10.97 255.255.255.224
+           ipv6 address 2001:25:26:6::1/64
+          !
+          interface Ethernet0/1.50
+           description VLAN 50 Blackhull-R1
+           encapsulation dot1Q 50
+           ip address 172.26.10.129 255.255.255.240
+           ipv6 address 2001:25:26:7::1/64
+          !
+          interface Ethernet0/2
+           no ip address
+           shutdown
+          !
+          interface Ethernet0/3
+           no ip address
+           shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          ip http secure-server
+          ip route 172.26.9.0 255.255.255.128 172.26.10.166
+          ip route 172.26.9.128 255.255.255.128 172.26.10.166
+          ip route 172.26.10.0 255.255.255.192 172.26.10.166
+          ip route 172.26.10.144 255.255.255.240 172.26.10.166
+          ip route 172.26.10.160 255.255.255.252 172.26.10.166
+          ip ssh bulk-mode 131072
+          no logging btrace
+          ipv6 route 2001:25:26:2::/64 2001:25:26:A::2
+          ipv6 route 2001:25:26:3::/64 2001:25:26:A::2
+          ipv6 route 2001:25:26:4::/64 2001:25:26:A::2
+          ipv6 route 2001:25:26:8::/64 2001:25:26:A::2
+          ipv6 route 2001:25:26:9::/64 2001:25:26:A::2
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          line aux 0
+          line vty 0 4
+           exec-timeout 0 0
+           login local
+           transport input ssh
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n11
+    image_definition: null
+    label: R1
+    node_definition: iol-xe
+    parameters: {}
+    ram: null
+    tags: []
+    x: 680
+    y: -240
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet0/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet0/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet0/3
+        slot: 3
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n6
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: server-0-eth0<->iol-l2-0-Ethernet0/1
+  - id: l1
+    n1: n6
+    n2: n9
+    i1: i1
+    i2: i3
+    conditioning: {}
+    label: SW-Ethernet0/0<->SWM1-GigabitEthernet0/2
+  - id: l2
+    n1: n9
+    n2: n8
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: SWM1-GigabitEthernet0/0<->SW3-Ethernet0/0
+  - id: l3
+    n1: n8
+    n2: n1
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: SW3-Ethernet0/1<->FIN 1-eth0
+  - id: l4
+    n1: n8
+    n2: n2
+    i1: i9
+    i2: i0
+    conditioning: {}
+    label: SW3-Ethernet2/0<->ACA 1-eth0
+  - id: l5
+    n1: n7
+    n2: n3
+    i1: i5
+    i2: i0
+    conditioning: {}
+    label: SW4-Ethernet1/0<->DOC 1-eth0
+  - id: l6
+    n1: n7
+    n2: n10
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: SW4-Ethernet0/1<->SW5-Ethernet0/1
+  - id: l7
+    n1: n7
+    n2: n10
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: SW4-Ethernet0/2<->SW5-Ethernet0/2
+  - id: l8
+    n1: n10
+    n2: n4
+    i1: i9
+    i2: i0
+    conditioning: {}
+    label: SW5-Ethernet2/0<->EST 1-eth0
+  - id: l9
+    n1: n10
+    n2: n5
+    i1: i13
+    i2: i0
+    conditioning: {}
+    label: SW5-Ethernet3/0<->GES 1-eth0
+  - id: l10
+    n1: n9
+    n2: n11
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: SWM1-GigabitEthernet0/1<->iol-0-Ethernet0/0
+  - id: l11
+    n1: n11
+    n2: n7
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: iol-0-Ethernet0/1<->SW4-Ethernet0/0
+lab:
+  description: ''
+  notes: ''
+  title: Lab at Mon 17:37 PM
+  version: 0.2.2
